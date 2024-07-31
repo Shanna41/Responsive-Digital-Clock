@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="center">Digital Clock</h2>
+        <div class="clock">
+            <div id="hour" class="time">00</div>:
+            <div id="minute" class="time">00</div>:
+            <div id="second" class="time">00</div>
+        </div>
+        <div class="location-input">
+            <input type="text" id="location" placeholder="Enter a location">
+            <button id="submit">Submit</button>
+        </div>
+        <div class="actions">
+            <button class="icon-button"><i class="fas fa-share-alt"></i></button>
+            <button class="icon-button"><i class="fas fa-save"></i></button>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
+
+
+
