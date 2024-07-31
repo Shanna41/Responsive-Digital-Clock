@@ -7,7 +7,7 @@ A Digital Clock that's responsive on multiple devices offering time for any loca
 - **Real-Time Updates:** The clock updates every second, providing a real-time experience.
 - **Powered by moment.js and World Time API:** Responsive-Digital-Clock uses moment.js for accurate time formatting and the World Time API to fetch the current time for the entered location.
 
-## How to Embark on Your Time Travel
+## How to use Responsive-Digital-Clock
 
 1. Open an HTML file in a web browser.
 2. Enter any location in the input field (note: must be in the IANA Time Zone Database, e.g., 'America/New_York'format. ).
