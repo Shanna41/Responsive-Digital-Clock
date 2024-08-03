@@ -1,30 +1,45 @@
-const locationInput = document.getElementById('location');
+const locationInput = document.getElementById('locations');
 const submitButton = document.getElementById('submit');
 const hourElement = document.getElementById('hour');
 const minuteElement = document.getElementById('minute');
-const secondElement = document.getElementById('second');
 
-function updateTime(location) {
-    fetch('http://worldtimeapi.org/api/timezone/' + location)
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(`Location not found: ${location}`);
-            }
-            return res.json();
-        })
-        .then(data => {
-            let datetime = data.datetime;
-            let momentTime = moment(datetime);
-            hourElement.innerText = momentTime.format('HH');
-            minuteElement.innerText = momentTime.format('mm');
-            secondElement.innerText = momentTime.format('ss');
-        })
-        .catch(err => console.error('Error:', err));
+let locations;
+
+async function getLocations() {
+  try {
+    const res = await fetch("http://worldtimeapi.org/api/timezone/");
+    locations = await res.json();
+    const select = document.getElementById('locations')
+    const html = locations.map(location => 
+        `<option value=${location}> ${location}</option>`
+    ).join('')
+    select.innerHTML = html;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function updateTime(location) {
+  try {
+    const res = await fetch(`http://worldtimeapi.org/api/timezone/${location}`);
+    const data = await res.json();
+    const datetime = moment(data.datetime);
+    hourElement.textContent = datetime.format('HH');
+    minuteElement.textContent = datetime.format('mm');
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 submitButton.addEventListener('click', function() {
-    let location = locationInput.value;
-    setInterval(function() {
-        updateTime(location);
-    }, 1000);
+  let location = locationInput.value;
+  setInterval(function() {
+    console.log('Interval fired'); // Check if the interval is running
+    updateTime(location);
+  }, 1000);
 });
+
+getLocations();
+
+
+
